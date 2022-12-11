@@ -1,0 +1,28 @@
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+<div class="layout-topbar">
+    <a class="layout-topbar-logo" routerLink="">
+        <img src = "assets/demo/images/logo.png">
+        <span STYLE="font-family:'Oleo Script Swash Caps', cursive">Arteate</span>
+    </a>
+
+    <div class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <button class="p-link layout-topbar-button" (click)= "desplegarInfo()">
+            <i class="pi pi-info-circle"></i>
+            <span>Profile</span>
+        </button>
+        <button class="p-link layout-topbar-button" (click)= "desplegarArtistas()">
+            <i class="pi pi-users"></i>
+            <span>Artistas</span>
+        </button>
+        <button class="p-link layout-topbar-button" (click)= "desplegarInicioSesion()">
+            <i class="pi pi-user"></i>
+            <span>Info</span>
+        </button>
+        <button class="p-link layout-topbar-button" *ngIf = "hayingresado">
+            <i class="pi pi-user-edit"></i>
+            <span>Info</span>
+        </button>
+    </div>
+</div>

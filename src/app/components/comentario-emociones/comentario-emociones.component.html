@@ -1,0 +1,67 @@
+<div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" >
+    <div class="card p-fluid bg-bluegray-900" *ngIf="tipo == 'fotografia' || tipo == 'pintura' || tipo == 'grafiti' || tipo == 'tatuajes'">
+        <div>
+            <p-image src="{{serverPath}}{{publica.archivo}}" alt="Image" width="400" height="360" [preview]="true"></p-image>
+        </div>
+    </div>
+    <div class="card flex p-fluid bg-bluegray-900 align-items-center justify-content-center" *ngIf="tipo == 'videos'">
+        <vm-player controls>
+            <vm-video cross-origin="true">
+              <source data-src="{{serverPath}}{{publica.archivo}}" type="video/mp4"/>
+            </vm-video>
+        </vm-player>
+    </div>
+    <div class="card flex p-fluid bg-bluegray-900 align-items-center justify-content-center" *ngIf="tipo == 'musica'">
+        <vm-player #player controls>
+            <vm-video cross-origin="true">
+              <source data-src="{{serverPath}}{{publica.archivo}}" type="audio/mp3"/>
+            </vm-video>
+        </vm-player>
+        <vm-default-ui>
+        </vm-default-ui>
+    </div>
+    <div class="col-6">
+        <div class="grid flex card p-fluid justify-content-between">
+            <div>
+                <h2> Datos de la publicación:  </h2>
+                <p> Artista: Tú</p>
+                <p> Titulo: {{publica.titulo}}</p>
+                <p> Descripción: {{publica.descripcion}}</p>
+                <p> fecha de publicación: {{publica.fecha}}</p>
+                <p> Likes: {{publica.likes}}</p>
+                <p *ngIf = "sentimiento == 'Alegria'"> Tu publicación produce : {{sentimiento}} 😊</p>
+                <p *ngIf = "sentimiento == 'Enojo'"> Tu publicación produce : {{sentimiento}} 😡</p>
+                <p *ngIf = "sentimiento == 'Disgusto'"> Tu publicación produce : {{sentimiento}} 🥴</p>
+                <p *ngIf = "sentimiento == 'Miedo'"> Tu publicación produce : {{sentimiento}} 😨</p>
+                <p *ngIf = "sentimiento == 'Neutral'"> Tu publicación produce : {{sentimiento}} 😑</p>
+                <p *ngIf = "sentimiento == 'Tristeza'"> Tu publicación produce : {{sentimiento}} 🙁</p>
+                <p *ngIf = "sentimiento == 'Sorpresa'"> Tu publicación produce : {{sentimiento}} 😯</p>
+            </div>
+        </div>
+    </div>
+</div>
+<p-table [value]="comentarios" responsiveLayout="scroll" *ngIf = "comentarios.length > 0">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Fecha</th>
+            <th>Correo</th>
+            <th>Comentario</th>
+            <th> Grafica de emociones </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-comentario>
+        <tr>
+            <td>{{comentario.fecha}}</td>
+            <td>{{comentario.usuario}}</td>
+            <td>{{comentario.comentario}}</td>
+            <td> 
+                <p-chart type="pie" [data]="{ labels: ['Enojo','Disgusto','Miedo', 'Alegria', 'Neutral', 'Tristeza', 'Sorpresa'], datasets: [ { data: [comentario.enojo, comentario.disgusto , comentario.miedo , comentario.alegria , comentario.neutral, comentario.tristeza , comentario.sorpresa], backgroundColor: [ '#FB3251', '#68EE68', '#D15BE2', '#FFED20', '#DAD9D9', '#9CD2FB', '#F7C733'], hoverBackgroundColor: [ '#F72f45', '#8BE68E', '#D68FF9', '#F7ED8A', '#E8E8E8', '#B8EBFD' , '#FBDE84' ] } ] }" [options]="pieOptions" ></p-chart>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
+<div *ngIf = "comentarios.length == 0">
+    <h3> No hay comentarios de momento </h3>
+</div>
+
+<router-outlet> </router-outlet>

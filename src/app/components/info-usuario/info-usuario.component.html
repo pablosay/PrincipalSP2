@@ -1,0 +1,71 @@
+<br><br>
+<br><br>
+<br><br>
+<div class="grid flex align-items-center min-w-sc justify-content-center align-content-between">
+    <figure class="snip1376">
+        <img src = "{{fotoPath}}" alt="sample17" />
+        <figcaption>
+        <h2>{{nombre}}, {{usuario.nacimiento}}</h2>
+        <h3> {{usuario.correo}} </h3>
+        <h4> + 502 {{usuario.telefono}}</h4>
+        <p> {{usuario.descripcion}}</p>
+        <button pButton pRipple label="Regresar" class="mr-2 mb-2 bg-bluegray-900" (click)= "regresar()"></button>
+        <button pButton pRipple label="Donacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "donar()"></button>
+        </figcaption>
+    </figure>
+    <div class="col-12 md:col-6" *ngIf = "haylocacion">
+        <div class="card p-fluid">
+            <div class="field">
+                <h5>Ubicación</h5>
+                <p-gmap  [style]="{'width':'100%','height':'350px', 'margin-bottom': '1em'}" [options]="options"></p-gmap>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<p-dataView #dv [value]="publicaciones" [paginator]="true" [rows]="8" filterBy="titulo" layout="list">
+    <ng-template pTemplate="header">
+        <div class="flex flex-column md:flex-row md:justify-content-between">
+            <span class="p-input-icon-left mb-2 md:mb-0">
+                <i class="pi pi-search"></i>
+                <input type="search" pInputText placeholder="Busqueda por titulo" (input)="dv.filter($event.target.value)">
+            </span>
+        </div>
+    </ng-template>
+    <ng-template let-publicacion pTemplate="listItem">
+        <div class="card p-fluid bg-bluegray-900" *ngIf="publicacion.categoria == 'F' || publicacion.categoria == 'P' || publicacion.categoria == 'G' || publicacion.categoria == 'T'">
+            <div>
+                <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="360" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="card flex p-fluid bg-bluegray-900 align-items-center justify-content-center" *ngIf="publicacion.categoria == 'V'">
+            <vm-player controls>
+                <vm-video cross-origin="true">
+                  <source data-src="{{serverPath}}{{publicacion.archivo}}" type="video/mp4"/>
+                </vm-video>
+            </vm-player>
+        </div>
+        <div class="card flex p-fluid bg-bluegray-900 align-items-center justify-content-center" *ngIf="publicacion.categoria == 'M'">
+            <vm-player #player controls>
+                <vm-video cross-origin="true">
+                  <source data-src="{{serverPath}}{{publicacion.archivo}}" type="audio/mp3"/>
+                </vm-video>
+            </vm-player>
+            <vm-default-ui>
+            </vm-default-ui>
+        </div>
+        <div class="col-8">
+            <div class="card p-fluid">
+                <h2 style="font-family:'Oleo Script Swash Caps', cursive;"> Datos de la publicación:  </h2>
+                <p> Artista: {{nombre}}</p>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "comentarios(publicacion)"></button>
+                <p-toggleButton [onIcon]="'pi pi-heart'" [onLabel]="'Te gusta esta publicación!'" offIcon="pi pi-heart" offLabel = "Te gusta esta publicacion?" (onChange)="handleChange($event , publicacion)"></p-toggleButton>
+            </div>
+        </div>
+    </ng-template>
+</p-dataView>
+<router-outlet></router-outlet>

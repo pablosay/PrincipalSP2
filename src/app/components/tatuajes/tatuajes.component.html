@@ -1,0 +1,41 @@
+<p-messages></p-messages>
+<br><br>
+<br><br>
+<br>
+<div class="card">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" >
+        <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive; color: black;">   Tatuajes </h1>
+    </div>
+    <p-dataView #dv [value]="publicacionesTatuajes" [paginator]="true" [rows]="8" filterBy="titulo"
+         layout="list">
+        <ng-template pTemplate="header">
+            <div class="flex flex-column md:flex-row md:justify-content-between">
+                <span class="p-input-icon-left mb-2 md:mb-0">
+                    <i class="pi pi-search"></i>
+                    <input type="search" pInputText placeholder="Busqueda por titulo" (input)="dv.filter($event.target.value)">
+                </span>
+            </div>
+        </ng-template>
+        <ng-template let-publicacion pTemplate="listItem">
+            <div class="card p-fluid bg-bluegray-900">
+                <div>
+                    <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="350" [preview]="true"></p-image>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="card p-fluid">
+                    <h2 style="font-family:'Oleo Script Swash Caps', cursive;"> Datos de la publicación:  </h2>
+                    <p> Artista: {{publicacion.nombre}}</p>
+                    <p> Titulo: {{publicacion.titulo}}</p>
+                    <p> Descripción: {{publicacion.descripcion}}</p>
+                    <p> fecha de publicación: {{publicacion.fecha}}</p>
+                    <p> Likes: {{publicacion.likes}}</p>
+                    <button pButton pRipple label="Info. creador" class="mr-2 mb-2 bg-bluegray-900" (click)= "verPerfil(publicacion.usuario, publicacion.nombre, 'tatuajes')"></button>
+                    <button pButton pRipple label="Comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "comentarios(publicacion)"></button>
+                    <p-toggleButton [onIcon]="'pi pi-heart'" [onLabel]="'Te gusta esta publicación!'" offLabel = "Te gusta la publicacion?" offIcon="pi pi-heart" (onChange)="handleChange($event , publicacion)"></p-toggleButton>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+<router-outlet></router-outlet>

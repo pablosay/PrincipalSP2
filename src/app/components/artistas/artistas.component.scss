@@ -1,0 +1,29 @@
+:host ::ng-deep .p-chip.custom-chip1 {
+    background: var(--primary-color);
+    color: var(--primary-color-text);
+}
+
+:host ::ng-deep .p-chip.custom-chip2 {
+    background: var(--green-500);
+    color: var(--primary-color-text);
+}
+
+:host ::ng-deep .p-chip.custom-chip3 {
+    background: var(--yellow-500);
+    color: var(--primary-color-text);
+}
+
+:host ::ng-deep .p-chip.custom-chip4 {
+    background: var(--blue-500);
+    color: var(--primary-color-text);
+}
+
+:host ::ng-deep .p-chip.custom-chip5 {
+    background: #e33042;
+    color: var(--primary-color-text);
+}
+
+:host ::ng-deep .p-chip.custom-chip6 {
+    background: var(--orange-500);
+    color: var(--primary-color-text);
+}

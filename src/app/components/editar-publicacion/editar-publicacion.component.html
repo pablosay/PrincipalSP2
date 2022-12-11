@@ -1,0 +1,41 @@
+<p-messages></p-messages> 
+<div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2">
+    <div class="card p-fluid bg-bluegray-900">
+        <div>
+            <div *ngIf = "tipo == 'fotografia' || tipo == 'pintura' || tipo == 'grafiti' || tipo == 'tatuajes'">
+                <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="300" [preview]="true"></p-image>
+            </div>
+            <div *ngIf = "tipo == 'musica'">
+                <vm-player #player controls >
+                    <vm-video cross-origin="true">
+                      <source data-src="{{serverPath}}{{publicacion.archivo}}" type="audio/mp3"/>
+                    </vm-video>
+                </vm-player>
+                <vm-default-ui>
+                </vm-default-ui>
+            </div>
+            <div *ngIf = "tipo == 'video'"> 
+                <vm-player controls>
+                    <vm-video cross-origin="true">
+                      <source data-src="{{serverPath}}{{publicacion.archivo}}" type="video/mp4"/>
+                    </vm-video>
+                </vm-player>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <form [formGroup]="form" (ngSubmit)="actualizar()"> 
+                <h2> Datos de la publicación:  </h2>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <div class="field">
+                    <label htmlFor="titulo">Titulo de la obra: </label>
+                    <input pInputText  id="titulo" type="text" formControlName="titulo"/>
+                </div>
+                <button pButton pRipple label="Actualizar" [disabled]="!form.valid" class="mr-2 mb-2 bg-bluegray-900" ></button>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

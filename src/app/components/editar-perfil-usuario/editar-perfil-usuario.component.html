@@ -1,0 +1,65 @@
+<p-messages></p-messages> 
+<div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <form [formGroup]="editarPerfilForm" (ngSubmit)="actualizarPerfil()"> 
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;">Editar perfíl </h1>
+                <div class="field">
+                    <label htmlFor="name1">Numero de telefono </label>
+                    <input pInputText  id="numerocel" type="text" formControlName="telefono"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="name1">Nacimiento </label>
+                    <p-calendar [showIcon]="true" inputId="icon" id = "nacimiento" dateFormat="yy-mm-dd"  formControlName="nacimiento"></p-calendar>
+                </div>
+                <div class="field">
+                    <label htmlFor="age1">Descripción </label>
+                    <textarea rows="5" cols="30" placeholder="Your Message" pInputTextarea id = "des" formControlName="descripcion"></textarea>
+                </div>
+                <button pButton pRipple label="Ingresar" [disabled]="!editarPerfilForm.valid" class="mr-2 mb-2 bg-bluegray-900"></button>
+            </form>
+        </div>
+    </div>
+ </div> 
+
+
+ <div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class="field">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Ubicación </h1>
+                <p> Ingresa las coordenadas de tu tienda/local/estudio. </p>
+                <form [formGroup]="locacionForm" (ngSubmit)="actualizarLocacion()">
+                    <div class="field">
+                        <label htmlFor="age1">Latitud </label>
+                        <input pInputText id="lat" type="number" formControlName="latitud"/>
+                    </div>
+                    <div class="field">
+                        <label htmlFor="age1">Longitud </label>
+                        <input pInputText id="lon" type="number" formControlName="longitud"/>
+                    </div>
+                    <button pButton pRipple label="Actualizar" [disabled]="!locacionForm.valid" class="mr-2 mb-2 bg-bluegray-900"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+<div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class="field">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;">Foto de perfíl</h1>
+                <p> Elige una foto para tu perfíl. </p>
+                <p-fileUpload name="image" url="{{serverUrl}}" (onUpload)="onUpload($event)" multiple="multiple" accept="image/*" maxFileSize="278000000" fileLimit = "1" >
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFiles.length">
+                            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+<router-outlet></router-outlet>

@@ -1,0 +1,121 @@
+<p-messages></p-messages> 
+ <div class="grid flex align-items-center justify-content-center"style = "width: 100%;">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Pintura <img src = "assets/demo/images/pintura.png" width="25" height="25"></h1>
+            </div>
+            
+            <div class="field">
+                <p-fileUpload name="image" url="{{serverUrlPintura}}" (onUpload)="onUploadPintura($event)" multiple="multiple" accept="image/*" maxFileSize="278000000" fileLimit = "1" class="bg-bluegray-900">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesPintura.length">
+                            <li *ngFor="let file of uploadedFilesPintura">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+ 
+
+ <div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Grafiti <img src = "assets/demo/images/grafiti.png" width="25" height="25"> </h1>
+            </div>
+            <div class="field">
+                <p-fileUpload name="image" url="{{serverUrlGrafiti}}" (onUpload)="onUploadGrafiti($event)" multiple="multiple" accept="image/*" maxFileSize="278000000" fileLimit = "1">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesGrafiti.length">
+                            <li *ngFor="let file of uploadedFilesGrafiti">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+ 
+
+<div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Fotografia <img src = "assets/demo/images/camar.jpeg" width="25" height="25"> </h1>
+            </div>
+            <div class="field">
+                <p-fileUpload name="image" url="{{serverUrlFotografia}}" (onUpload)="onUploadFotografia($event)" multiple="multiple" accept="image/*" maxFileSize="278000000" fileLimit = "1">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesFotografia.length">
+                            <li *ngFor="let file of uploadedFilesFotografia">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+ <div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Tatuaje <img src = "assets/demo/images/tatuaje.png" width="25" height="25"> </h1>
+            </div>
+            <div class="field">
+                <p-fileUpload name="image" url="{{serverUrlTattoo}}" (onUpload)="onUploadTattoo($event)" multiple="multiple" accept="image/*" maxFileSize="278000000" fileLimit = "1">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesTattoo.length">
+                            <li *ngFor="let file of uploadedFilesTattoo">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+ <div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Video <img src = "assets/demo/images/video.png" width="25" height="25"> </h1>
+            </div>
+            <div class="field">
+                <p-fileUpload name="video" url="{{serverUrlVideo}}" (onUpload)="onUploadVideo($event)" multiple="multiple" accept="video/*" maxFileSize="278000000" fileLimit = "1">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesVideo.length">
+                            <li *ngFor="let file of uploadedFilesVideo">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+ <div class="grid flex align-items-center min-w-sc justify-content-center ">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class = "justify-content-center align-items-center flex">
+                <h1 style="font-family:'Oleo Script Swash Caps', cursive;font-size: 20px;color: black;"> Musica  <img src = "assets/demo/images/musica.png" width="25" height="25"> </h1>
+            </div>
+            <div class="field">
+                <p-fileUpload name="audio" url="{{serverUrlAudio}}" (onUpload)="onUploadMusica($event)" multiple="multiple" accept="audio/*" maxFileSize="278000000" fileLimit = "1">
+                    <ng-template pTemplate="content">
+                        <ul *ngIf="uploadedFilesMusica.length">
+                            <li *ngFor="let file of uploadedFilesMusica">{{file.name}} - {{file.size}} bytes</li>
+                        </ul>
+                    </ng-template>
+                </p-fileUpload>
+            </div>
+        </div>
+    </div>
+ </div> 
+
+<router-outlet> </router-outlet>

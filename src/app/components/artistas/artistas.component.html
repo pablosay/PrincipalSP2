@@ -1,0 +1,105 @@
+
+<div class="surface-0 flex  justify-content-center min-h-screen min-w-screen overflow-hidden" style="padding-top: 70px;">
+    <div class = "flex-row">
+        <div class = "flex justify-content-center"> 
+            <span style = "font-family:'Oleo Script Swash Caps', cursive;font-size: 70px;color: black;"> Artistas guatemaltecos </span>
+        </div>
+        <div>
+            <p-table #dt1 [value]="artistas" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" 
+        [paginator]="true" 
+        [globalFilterFields]="['nombre','correo','likes','comentarios', 'fotografias', 'pinturas', 'musica', 'video', 'grafiti', 'tatuajes']">
+        <ng-template pTemplate="caption" class = "min-w-screen">
+            <div class="flex">
+                <span class="p-input-icon-left ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Busca información" />
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="min-width:15rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Nombre
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Correo
+                       
+                    </div>
+                </th>
+                <th style="min-width:15rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Foto
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Numero de comentarios
+                        
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Numero de likes
+                       
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Categorias
+                        
+                    </div>
+                </th>
+                <th style="min-width:10rem">
+                    <div class="flex justify-content-center align-items-center">
+                        Información artista
+                        
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-artista>
+            <tr>
+                <td>
+                    {{artista.nombre}}
+                </td>
+                <td>
+                    {{artista.correo}}
+                </td>
+                <td>
+                    <p-image src = "{{artista.foto}}" height="50"  width="50" [preview]="true"> </p-image>
+                </td>
+                <td>
+                    {{artista.comentarios}}
+                </td>
+                <td>
+                    <span *ngIf="artista.likes == null"> 0 </span>
+                    <span *ngIf="artista.likes != null"> {{artista.likes}} </span>
+                </td>
+                <td>
+                    <p-chip *ngIf= "artista.fotografias != ''" label="Fotografo" styleClass="mr-2 custom-chip1" ></p-chip>
+                    <p-chip *ngIf= "artista.pinturas != ''" label="Pintor" styleClass="mr-2 custom-chip2"></p-chip>
+                    <p-chip *ngIf= "artista.musica != ''" label="Musico" styleClass="mr-2 custom-chip3"></p-chip>
+                    <p-chip *ngIf= "artista.video != ''" label="Audiovisual" styleClass="mr-2 custom-chip4"></p-chip>
+                    <p-chip *ngIf= "artista.grafiti != ''" label="Grafitero" styleClass="mr-2 custom-chip5"></p-chip>
+                    <p-chip *ngIf= "artista.tatuajes != ''" label="Tatuador" styleClass="mr-2 custom-chip6"></p-chip>
+                    <span *ngIf= "artista.tatuajes == '' && artista.fotografias == '' && artista.pinturas == '' && artista.musica == '' && artista.video == '' && artista.grafiti == ''" > No ha subido contenido. </span>
+                </td>
+                <td> 
+                    <button pButton pRipple label="Visitar" class="mr-2 mb-2 bg-bluegray-900" (click)= "verPerfil(artista.correo, artista.nombre)"></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No hay artistas registrados.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+        </div>
+    </div>
+    
+</div>

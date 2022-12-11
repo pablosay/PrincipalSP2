@@ -1,0 +1,20 @@
+<p-messages></p-messages> 
+<div class="grid flex align-items-center min-w-sc justify-content-center" *ngIf = "ingresado">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <form [formGroup]="form" (ngSubmit)="ingresar()">
+                <h3>Inicio de sesion <i class="pi pi-instagram"></i></h3>
+                <div class="field">
+                    <label htmlFor="age1">Usuario: </label>
+                    <input pInputText  id="usuario" type="text" formControlName = "usuario"/>
+                </div>
+                <div class="field">
+                    <label htmlFor="age1">Contraseña: </label>
+                    <p-password id = "password" [feedback]="false" formControlName = "password"></p-password>
+                </div>
+                <button pButton pRipple label="Ingresar" [disabled]="!form.valid" class="mr-2 mb-2 bg-bluegray-900"></button>
+            </form>
+        </div>
+    </div>
+ </div> 
+<router-outlet></router-outlet>

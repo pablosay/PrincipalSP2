@@ -1,0 +1,28 @@
+<div class="grid flex align-items-center min-w-sc justify-content-center ">
+        <figure class="snip1376" >
+            <img src = "{{fotoPath}}"/>
+            <figcaption>
+            <h2 *ngIf="edad==0;else nohay">{{nombre}}</h2>
+            <ng-template #nohay>
+                <h2>{{nombre}}, {{edad}}</h2>
+            </ng-template> 
+            <h3> {{correo}} </h3>
+            <h4 *ngIf="telefono!=null;else no_telefono"> + 502 {{telefono}}</h4>
+            <ng-template #no_telefono>
+                <h4> Aun no hay telefono registrado </h4>
+            </ng-template> 
+            <p> {{descripcion}}</p>
+            </figcaption>
+        </figure>
+</div>
+<div class="grid flex align-items-center min-w-sc justify-content-center " *ngIf = "haylocacion">
+    <div class="col-12 md:col-6">
+        <div class="card p-fluid">
+            <div class="field">
+                <h5>Ubicación</h5>
+                <p-gmap  [style]="{'width':'100%','height':'320px', 'margin-bottom': '1em'}" [options]="options"></p-gmap>
+            </div>
+        </div>
+    </div>
+ </div> 
+<router-outlet></router-outlet>

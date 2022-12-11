@@ -1,0 +1,218 @@
+<p-messages></p-messages>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Pintura <img src = "assets/demo/images/pintura.png" width="25" height="25"></h1>
+</div>
+
+<div *ngIf = "publicacionesPintura?.length != 0 ; else no_pintura">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacionp of publicacionesPintura">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <p-image src="{{serverPath}}{{publicacionp.archivo}}" alt="Image" width="400" height="300" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Titulo: {{publicacionp.titulo}}</p>
+                <p> Descripción: {{publicacionp.descripcion}}</p>
+                <p> fecha de publicación: {{publicacionp.fecha}}</p>
+                <p> Likes: {{publicacionp.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacionp, 'pintura')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacionp, 'pintura')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_pintura>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Fotografia <img src = "assets/demo/images/camar.jpeg" width="25" height="25"> </h1>
+</div>
+
+<div *ngIf = "publicacionesFotografia?.length != 0 ; else no_fotos">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacion of publicacionesFotografia">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="300" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacion, 'fotografia')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacion, 'fotografia')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_fotos>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Grafiti <img src = "assets/demo/images/grafiti.png" width="25" height="25"> </h1>
+</div>
+
+<div *ngIf = "publicacionesGrafiti?.length != 0 ; else no_gra">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacion of publicacionesGrafiti">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="300" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacion, 'grafiti')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacion, 'grafiti')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_gra>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Tatuaje <img src = "assets/demo/images/tatuaje.png" width="25" height="25"> </h1>
+</div>
+
+<div *ngIf = "publicacionesTattoo?.length != 0 ; else no_tat">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacion of publicacionesTattoo">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <p-image src="{{serverPath}}{{publicacion.archivo}}" alt="Image" width="400" height="300" [preview]="true"></p-image>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacion, 'tatuajes')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacion, 'tatuajes')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_tat>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Musica <img src = "assets/demo/images/musica.png" width="25" height="25"> </h1>
+</div>
+
+<div *ngIf = "publicacionesMusica?.length != 0 ; else no_mus">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacion of publicacionesMusica">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <vm-player #player controls>
+                    <vm-video cross-origin="true">
+                      <source data-src="{{serverPath}}{{publicacion.archivo}}" type="audio/mp3"/>
+                    </vm-video>
+                </vm-player>
+                <vm-default-ui>
+                </vm-default-ui>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacion, 'musica')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacion, 'musica')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_mus>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class = "justify-content-center align-items-center flex">
+    <h1 STYLE="font-family:'Oleo Script Swash Caps', cursive;color: black;"> Video <img src = "assets/demo/images/video.png" width="25" height="25"> </h1>
+</div>
+
+<div *ngIf = "publicacionesVideo?.length != 0 ; else no_vid">
+    <div class="grid flex align-items-center justify-content-center min-w-sc border-radius:2" *ngFor = "let publicacion of publicacionesVideo">
+        <div class="card p-fluid bg-bluegray-900">
+            <div>
+                <vm-player controls>
+                    <vm-video cross-origin="true">
+                      <source data-src="{{serverPath}}{{publicacion.archivo}}" type="video/mp4"/>
+                    </vm-video>
+                </vm-player>
+            </div>
+        </div>
+        <div class="col-12 md:col-6">
+            <div class="card p-fluid">
+                <h2> Datos de la publicación:  </h2>
+                <p> Artista: {{publicacion.nombre}}</p>
+                <p> Titulo: {{publicacion.titulo}}</p>
+                <p> Descripción: {{publicacion.descripcion}}</p>
+                <p> fecha de publicación: {{publicacion.fecha}}</p>
+                <p> Likes: {{publicacion.likes}}</p>
+                <button pButton pRipple label="Editar publicacion" class="mr-2 mb-2 bg-bluegray-900" (click) = "editar(publicacion, 'video')"></button>
+                <button pButton pRipple label="Ver comentarios" class="mr-2 mb-2 bg-bluegray-900" (click) = "verComentarios(publicacion, 'video')"></button>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #no_vid>
+    <div class = "grid justify-content-center align-items-center flex">
+        <div class = "flex-row align-items-center justify-content-center"> 
+            <div class = "flex justify-content-center align-items-center"> 
+                <img src = "assets/demo/images/nofile.png" width="40" height="40">
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<router-outlet></router-outlet>
