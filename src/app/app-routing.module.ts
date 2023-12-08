@@ -25,7 +25,7 @@ import { ArtistasComponent } from './components/artistas/artistas.component';
 
 const routes: Routes = [
 
-
+    {path: '', redirectTo: '/inicio/principal', pathMatch: 'full'},
     {path: 'inicio', component: PaginaInicialComponent,
         children: [
             {path: 'inicio-sesion', component: LoginComponent},
